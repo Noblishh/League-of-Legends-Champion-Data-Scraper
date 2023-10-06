@@ -21,7 +21,7 @@ champions = [
 	"camille", "akshan", "belveth", "braum", "jhin", "kindred", "zeri", "jinx", "tahmkench", "viego", "senna",
 	"lucian", "zed", "kled", "ekko", "qiyana", "vi", "aatrox", "nami", "azir", "yuumi", "samira", "thresh", "illaoi",
 	"reksai", "ivern", "kalista", "bard", "rakan", "xayah", "ornn", "sylas", "neeko", "aphelios", "rell", "pyke",
-	"vex", "yone", "sett", "lillia", "gwen", "renata", "nilah", "ksante", "milio", "naafiri"
+	"vex", "yone", "sett", "lillia", "gwen", "renata", "nilah", "ksante", "milio", "naafiri", "briar",
 ]
 
 async def find_key_ending_with_async(dictionary, partial_key):
@@ -144,30 +144,30 @@ async def generate_unit_data():
 
 			# Get abilities data
 			champion_data["baseStats"]  = {
-				"baseHP":  root.get("baseHP", 0.0),
-				"hpPerLevel":  root.get("hpPerLevel", 0.0),
-				"baseStaticHPRegen":  root.get("baseStaticHPRegen", 0.0),
-				"hpRegenPerLevel":  root.get("hpRegenPerLevel", 0.0),
-				"healthBarHeight":  root.get("healthBarHeight", 0.0),
-				"baseDamage":  root.get("baseDamage", 0.0),
-				"baseArmor":  root.get("baseArmor", 0.0),
-				"armorPerLevel":  root.get("armorPerLevel", 0.0),
-				"baseMoveSpeed":    root.get("baseMoveSpeed", 0.0),
-				"baseSpellBlock":      root.get("baseSpellBlock", 0.0),
-				"spellBlockPerLevel":      root.get("spellBlockPerLevel", 0.0), 
-				"attackRange": root.get("attackRange", 0.0), 
-				"attackSpeed": root.get("attackSpeed", 0.0),
-				"attackSpeedRatio":  root.get("attackSpeedRatio", 0.0),
-				"attackSpeedPerLevel":    float(root.get("attackSpeedPerLevel", 0.0)),
+				"baseHP":  root.get("baseHP", 0),
+				"hpPerLevel":  root.get("hpPerLevel", 0),
+				"baseStaticHPRegen":  root.get("baseStaticHPRegen", 0),
+				"hpRegenPerLevel":  root.get("hpRegenPerLevel", 0),
+				"healthBarHeight":  root.get("healthBarHeight", 0),
+				"baseDamage":  root.get("baseDamage", 0),
+				"baseArmor":  root.get("baseArmor", 0),
+				"armorPerLevel":  root.get("armorPerLevel", 0),
+				"baseMoveSpeed":    root.get("baseMoveSpeed", 0),
+				"baseSpellBlock":      root.get("baseSpellBlock", 0),
+				"spellBlockPerLevel":      root.get("spellBlockPerLevel", 0), 
+				"attackRange": root.get("attackRange", 0), 
+				"attackSpeed": root.get("attackSpeed", 0),
+				"attackSpeedRatio":  root.get("attackSpeedRatio", 0),
+				"attackSpeedPerLevel":    float(root.get("attackSpeedPerLevel", 0)),
 				"passiveSpell":   root.get("passiveSpell",''),
 				#"tags": list(tags)
 
 				}        
 			champion_data["basicAttack"]  = {
 				
-				"mAttackTotalTime":  root.get("mAttackTotalTime", 100.0),
-				"mAttackCastTime":  root.get("mAttackCastTime", 100.0),
-				"mAttackProbability":  root.get("mAttackProbability", 100.0),
+				"mAttackTotalTime":  root.get("mAttackTotalTime", 100),
+				"mAttackCastTime":  root.get("mAttackCastTime", 100),
+				"mAttackProbability":  root.get("mAttackProbability", 100),
 			}
 
 
@@ -247,7 +247,7 @@ async def generate_unit_data():
 				if "mLists" in mTooltipData:
 					LevelUp = mLists.get('LevelUp', None)
 			
-			stunDuration = 0.0
+			stunDuration = 0
 			targetingType = ''
 			
 			if targetingType == '':
@@ -298,20 +298,20 @@ async def generate_unit_data():
 			
 			champion_data[ability]  = {
 			"missileName":   ability_key["mScriptName"],
-			"mCoefficient":  mSpell.get("mCoefficient", 0.0),
-			"mCoefficient2":  mSpell.get("mCoefficient2", 0.0),
+			"mCoefficient":  mSpell.get("mCoefficient", 0),
+			"mCoefficient2":  mSpell.get("mCoefficient2", 0),
 			"mAnimationName":  mSpell.get("mAnimationName", ''),
-			"mCantCancelWhileWindingUp":  bool(mSpell.get("mCantCancelWhileWindingUp", 0.0)),
-			"alwaysSnapFacing":  bool(mSpell.get("alwaysSnapFacing", 0.0)),
-			"mLineWidth":  mSpell.get("mLineWidth", 0.0),
-			"missileSpeed":  mSpell.get("missileSpeed", 0.0),
-			"totalLevels":  LevelUp.get("levelCount", 0.0),
+			"mCantCancelWhileWindingUp":  bool(mSpell.get("mCantCancelWhileWindingUp", 0)),
+			"alwaysSnapFacing":  bool(mSpell.get("alwaysSnapFacing", 0)),
+			"mLineWidth":  mSpell.get("mLineWidth", 0),
+			"missileSpeed":  mSpell.get("missileSpeed", 0),
+			"totalLevels":  LevelUp.get("levelCount", 0),
 			"mTargetingType":  targetingType,
 			"stunDuration":  stunDuration,
 
 			
 			
-			"mCastTime":  mSpell.get("mCastTime", 0.0),
+			"mCastTime":  mSpell.get("mCastTime", 0),
 
 			"castRange":   castRange,
 			"castRange":   castRange,
@@ -331,31 +331,31 @@ async def generate_unit_data():
 
 
 			# # Get basic attack info
-			# missile_speed = 0.0
-			# windup = 0.0
+			# missile_speed = 0
+			# windup = 0
 			# basic_attack = await find_key_ending_with_async(props, champion + "BasicAttack")
 			# if basic_attack != None:
 			#     spell = basic_attack.get('mSpell', None)
 			#     if spell:
-			#         missile_speed = spell.get("missileSpeed", 0.0)
+			#         missile_speed = spell.get("missileSpeed", 0)
 			# if 'basicAttack' in root:
 			#     basic_attack = root['basicAttack']
 			#     if 'mAttackTotalTime' in basic_attack and 'mAttackCastTime' in basic_attack:
 			#         windup = basic_attack['mAttackCastTime']/basic_attack['mAttackTotalTime']
 			#     else:
-			#         windup = 0.3 + basic_attack.get('mAttackDelayCastOffsetPercent', 0.0)
+			#         windup = 0.3 + basic_attack.get('mAttackDelayCastOffsetPercent', 0)
 
 			# tags = set(['Unit_' + x.strip().replace('=', '_') for x in root.get("unitTagsString", "").split('|')])
 			# sdsdsqdsq  = {
 			#     "name":             champion,
-			#     "healthBarHeight":  root.get("healthBarHeight", 100.0),
-			#     "baseMoveSpeed":    root.get("baseMoveSpeed", 0.0),
-			#     "attackRange":      root.get("attackRange", 0.0),
-			#     "attackSpeed":      root.get("attackSpeed", 0.0), 
-			#     "attackSpeedRatio": root.get("attackSpeedRatio", 0.0), 
-			#     "acquisitionRange": root.get("acquisitionRange", 0.0),
-			#     "selectionRadius":  root.get("selectionRadius", 0.0),
-			#     "pathingRadius":    root.get("pathfindingCollisionRadius", 0.0),
+			#     "healthBarHeight":  root.get("healthBarHeight", 100),
+			#     "baseMoveSpeed":    root.get("baseMoveSpeed", 0),
+			#     "attackRange":      root.get("attackRange", 0),
+			#     "attackSpeed":      root.get("attackSpeed", 0), 
+			#     "attackSpeedRatio": root.get("attackSpeedRatio", 0), 
+			#     "acquisitionRange": root.get("acquisitionRange", 0),
+			#     "selectionRadius":  root.get("selectionRadius", 0),
+			#     "pathingRadius":    root.get("pathfindingCollisionRadius", 0),
 			#     "gameplayRadius":   root.get("overrideGameplayCollisionRadius", 65.0),
 			#     "basicAtkMissileSpeed": missile_speed,
 			#     "basicAtkWindup": windup,
@@ -377,13 +377,13 @@ async def generate_unit_data():
 					"name":               os.path.basename(key),
 					"icon":               f'https://raw.communitydragon.org/latest/game/assets/characters/{champion}/hud/icons2d/{icon_name.lower()}.png',
 					"flags":              s.get("mAffectsTypeFlags", 0),
-					"delay":              s.get("mCastTime", 0.5 + 0.5*s.get("delayCastOffsetPercent", 0.0)),
-					"castRange":          s.get("castRangeDisplayOverride", s.get("castRange", [s.get("castConeDistance", 0.0)]))[0],
-					"castRadius":         s.get("castRadiusSecondary", s.get("castRadius", [0.0]))[0],
-					"width":              s.get("mLineWidth", 0.0),
-					"height":             0.0,
-					"speed":              s.get("missileSpeed", 0.0),
-					"travelTime":         0.0,
+					"delay":              s.get("mCastTime", 0.5 + 0.5*s.get("delayCastOffsetPercent", 0)),
+					"castRange":          s.get("castRangeDisplayOverride", s.get("castRange", [s.get("castConeDistance", 0)]))[0],
+					"castRadius":         s.get("castRadiusSecondary", s.get("castRadius", [0]))[0],
+					"width":              s.get("mLineWidth", 0),
+					"height":             0,
+					"speed":              s.get("missileSpeed", 0),
+					"travelTime":         0,
 					"projectDestination": False
 				}
 				
@@ -395,10 +395,10 @@ async def generate_unit_data():
 					movcomp = missile.get("movementComponent", None)
 					if movcomp:
 						if spell["speed"] == 0:
-							spell["speed"] =          movcomp.get("mSpeed", 0.0)
-						spell["height"] =             movcomp.get("mOffsetInitialTargetHeight", 100.0)
+							spell["speed"] =          movcomp.get("mSpeed", 0)
+						spell["height"] =             movcomp.get("mOffsetInitialTargetHeight", 100)
 						spell["projectDestination"] = movcomp.get("mProjectTargetToCastRange", False)
-						spell["travelTime"] =         movcomp.get("mTravelTime", 0.0)
+						spell["travelTime"] =         movcomp.get("mTravelTime", 0)
 						
 				spells[spell["name"]] = spell
 		
@@ -415,5 +415,6 @@ async def generate_unit_data():
 	#     await f.write(json.dumps(list(spells.values()), indent=4))
 
 if __name__ == "__main__":
-	#asyncio.run(download_unit_data())
-	asyncio.run(generate_unit_data())
+    asyncio.set_event_loop_policy(asyncio.WindowsSelectorEventLoopPolicy())
+    asyncio.run(download_unit_data())
+    asyncio.run(generate_unit_data())
